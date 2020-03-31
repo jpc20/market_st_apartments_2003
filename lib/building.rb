@@ -23,4 +23,10 @@ class Building
 
     total_rent.to_f / @units.length.to_f
   end
+
+  def rented_units
+    @units.find_all do |unit|
+      unit.renter
+    end
+  end
 end
