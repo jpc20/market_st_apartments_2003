@@ -15,4 +15,12 @@ class Building
       unit.renter.name
     end
   end
+
+  def average_rent
+    total_rent = @units.sum do |unit|
+      unit.monthly_rent
+    end
+
+    total_rent.to_f / @units.length.to_f
+  end
 end
