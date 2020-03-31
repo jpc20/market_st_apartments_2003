@@ -96,4 +96,16 @@ class BuildingTest < Minitest::Test
     assert_equal ({ 3 => ["D4" ], 2 => ["B2", "C3"], 1 => ["A1"]}), @building.units_by_number_of_bedrooms
   end
 
+  def test_annual_breakdown
+    @building.add_unit(@unit1)
+    @building.add_unit(@unit2)
+    @unit2.add_renter(@renter3)
+
+    assert_equal ({"Spencer" => 11988}), @building.annual_breakdown
+
+    @unit1.add_renter(@renter4)
+
+    assert_equal ({"Jessie" => 14400, "Spencer" => 11988}), @building.annual_breakdown
+  end
+
 end

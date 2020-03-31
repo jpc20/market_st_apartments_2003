@@ -49,4 +49,14 @@ class Building
     grouped
   end
 
+  def annual_breakdown
+    renter_price_hash = {}
+
+    rented_units.each do |unit|
+      renter_price_hash[unit.renter.name] = unit.monthly_rent * 12
+    end
+
+    renter_price_hash
+  end
+
 end
