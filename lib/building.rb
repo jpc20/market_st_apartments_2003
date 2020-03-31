@@ -34,6 +34,7 @@ class Building
     most_expensive_rented_unit = rented_units.max_by do |unit|
       unit.monthly_rent
     end
+    
     most_expensive_rented_unit.renter
   end
 
@@ -41,11 +42,13 @@ class Building
     grouped = @units.group_by do |unit|
       unit.bedrooms
     end
+
     grouped.each do |num, units|
-      grouped[num]= units.map do |unit|
+      grouped[num] = units.map do |unit|
         unit.number
       end
     end
+
     grouped
   end
 

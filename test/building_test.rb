@@ -37,6 +37,7 @@ class BuildingTest < Minitest::Test
   def test_renters_empty_by_default
     @building.add_unit(@unit1)
     @building.add_unit(@unit2)
+    
     assert_equal [], @building.renters
   end
 

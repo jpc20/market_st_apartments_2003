@@ -1,4 +1,5 @@
 class Apartment
+  
   attr_reader :renter
   def initialize(information)
     @information = information
