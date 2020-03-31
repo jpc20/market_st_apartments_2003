@@ -8,4 +8,11 @@ class Building
   def add_unit(unit)
     @units << unit
   end
+
+  def renters
+    return [] if @units.none?{ |unit| unit.renter }
+    @units.map do |unit|
+      unit.renter.name
+    end
+  end
 end
