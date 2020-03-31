@@ -36,4 +36,17 @@ class Building
     end
     most_expensive_rented_unit.renter
   end
+
+  def units_by_number_of_bedrooms
+    grouped = @units.group_by do |unit|
+      unit.bedrooms
+    end
+    grouped.each do |num, units|
+      grouped[num]= units.map do |unit|
+        unit.number
+      end
+    end
+    grouped
+  end
+
 end
