@@ -70,4 +70,30 @@ class BuildingTest < Minitest::Test
     assert_equal [@unit2], @building.rented_units
   end
 
+  def test_renter_with_highest_rent
+    @building.add_unit(@unit1)
+    @building.add_unit(@unit2)
+    @building.add_unit(@unit3)
+    @unit2.add_renter(@renter3)
+
+    assert_equal @renter3, @building.renter_with_highest_rent
+
+    @unit1.add_renter(@renter4)
+
+    assert_equal @renter4, @building.renter_with_highest_rent
+
+    @unit3.add_renter(@renter5)
+
+    assert_equal @renter4, @building.renter_with_highest_rent
+  end
+
+  def test_units_by_number_of_bedrooms
+    @building.add_unit(@unit1)
+    @building.add_unit(@unit2)
+    @building.add_unit(@unit3)
+    @building.add_unit(@unit4)
+
+    assert_equal ({ 3 => ["D4" ], 2 => ["B2", "C3"], 1 => ["A1"]}), building.units_by_number_of_bedrooms
+  end
+
 end

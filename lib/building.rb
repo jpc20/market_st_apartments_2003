@@ -29,4 +29,11 @@ class Building
       unit.renter
     end
   end
+
+  def renter_with_highest_rent
+    most_expensive_rented_unit = rented_units.max_by do |unit|
+      unit.monthly_rent
+    end
+    most_expensive_rented_unit.renter
+  end
 end
