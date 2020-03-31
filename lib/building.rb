@@ -59,4 +59,14 @@ class Building
     renter_price_hash
   end
 
+  def rooms_by_renter
+    rooms_by_renter_hash = {}
+
+    rented_units.each do |unit|
+      rooms_by_renter_hash[unit.renter] = {bathrooms: unit.bathrooms, bedrooms: unit.bedrooms}
+    end
+
+    rooms_by_renter_hash
+  end
+
 end
