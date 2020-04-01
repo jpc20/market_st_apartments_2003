@@ -10,10 +10,12 @@ class Building
   end
 
   def renters
-    return [] if @units.none?{ |unit| unit.renter }
-    @units.map do |unit|
-      unit.renter.name
+    renters = @units.map do |unit|
+      if !unit.renter.nil?
+        unit.renter.name
+      end
     end
+    renters.compact
   end
 
   def average_rent
@@ -34,7 +36,7 @@ class Building
     most_expensive_rented_unit = rented_units.max_by do |unit|
       unit.monthly_rent
     end
-    
+
     most_expensive_rented_unit.renter
   end
 
